@@ -3,7 +3,11 @@
     <img alt="Vue logo" src="../assets/logo.png">
 
     <div>
-      <Boton spanX="2" spanY="1" texto="Soy un botón" />
+
+      <div>
+        <Boton spanX="3" spanY="1" texto="1" /> 
+      </div>
+
     </div>
 
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
