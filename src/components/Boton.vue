@@ -1,19 +1,27 @@
 <template>
-    <input :style=style type="button" :value=texto @click="alClick" />
+    <div>
+        <input :style=style type="button" :value=value @click="alClick(value)" />
+    </div>
 </template>
 
 <script>
 export default {
     name: 'Boton',
+    data: function(){
+        return {
+            test: 'sólo un test de data'
+        }
+    },
     props:{
-        texto: String,
+        value: {
+            type:String, 
+            default: "Texto default"
+        },
         // Defino las props para ancho y alto con tipo y valor por defecto
         spanX: {
-            type: Number,
             default: 1
         },
         spanY: {
-            type: Number,
             default: 1
         }
        
@@ -23,10 +31,10 @@ export default {
         // Función que retorna el estilo calculado según las props
         style: function(){
 
-            let spanX = parseInt(this.spanX)
+            let spanX = parseInt(this.spanX) 
             let spanY = parseInt(this.spanY)
 
-            if( spanX < 0 || spanY < 0 || !Number.isInteger(spanX) || !Number.isInteger(spanY) ){
+            if( spanX < 0 || spanY < 0 ){
                 spanX = spanY = 1
             }
 
@@ -47,8 +55,11 @@ export default {
         }
     },
     methods:{
-        alClick: function(){
-            alert('Apretaste ' + this.texto)
+        alClick: function(texto){
+            console.log('Apretaste ' + texto)
+        },
+        otraParaTest: function(x){
+            console.log('la otra funcion' + x)
         }
     }
 }
