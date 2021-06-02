@@ -5,7 +5,8 @@
     <div>
 
       <div>
-        <Boton spanX="3" spanY="1" texto="1" /> 
+        <Boton spanX="3.5" spanY="1" value="6" /> 
+        <Boton spanX="3.5" spanY="1" value="8" /> 
       </div>
 
     </div>
@@ -25,5 +26,5 @@ export default {
     //HelloWorld,
     Boton
   }
-}
+} 
 </script>
