@@ -6,7 +6,7 @@
 
       <div>
         <Boton spanX="3.5" spanY="1" value="6" /> 
-        <Boton spanX="3.5" spanY="1" value="8" /> 
+        <Boton spanY="2" value="8" /> 
       </div>
 
     </div>

@@ -42,7 +42,7 @@ export default {
                 spanY = 1
             }
 
-             if(spanY > 1){
+            if(spanY > 1){
                 spanX = 1
             }
             
