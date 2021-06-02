@@ -169,7 +169,7 @@ describe("Testeo de Boton", function(){
 
     expect(cumpleAlto || cumpleAncho).toBeTruthy();
 
-  });
+  }); //ok
 
 
 })
