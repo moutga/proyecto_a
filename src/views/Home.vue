@@ -1,13 +1,11 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <div class="w-100">store en home: {{operadores[0]}} y {{operadores[1]}}</div>
-    <div class="w-100">computed en home: {{operador1}} y {{operador2}}</div>
     <div>
 
       <div>
-
-        <Teclado :operando1=5 :operando2=8 />
+        
+        <Teclado :operando1=a :operando2=b /> 
 
       </div> 
 
@@ -26,15 +24,15 @@ import {mapState} from 'vuex'
 
 export default {
   name: 'Home',
+  data:function(){
+    return {
+      a : 4,
+      b : 2
+    }
+  },
   computed:{
     ...mapState(['operadores']),
 
-    operador1 : function(){
-      return this.operadores[0]
-    },
-    operador2 : function(){
-      return this.operadores[1]
-    }
   },
   components: {
     //HelloWorld,

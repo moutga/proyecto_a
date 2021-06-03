@@ -25,6 +25,10 @@ export default {
         },
         spanY: {
             default: 1
+        },
+        deOperacion: {
+            //type: Boolean,
+            default: false
         }
        
     },
@@ -65,12 +69,27 @@ export default {
         alClick: function(texto){
             console.log('Apretaste ' + texto)
 
+            const queHacer = {
+                '+' : 'sumar',
+                '-' : 'restar',
+                '*' : 'multiplicar',
+                '/' : 'dividir',
+                '=' : 'resolver',
+                defecto : 'operacion'
+            }
+
+            //let queOperador = 0
+
+            console.log(queHacer[texto] || queHacer['defecto']);
+
             this.cambiaOperador({operador: 0,valor: parseInt(texto)});
-            this.cambiaOperador({operador: 1,valor: parseInt(texto)+2});
 
-            //this.$store.commit('cambiaOperador', {operador: 0,valor: parseInt(texto)})
+            // this.$store.commit("cambiaOperador", {operador: 0,valor: parseInt(texto)});
+            // this.$store.commit("cambiaOperador", {operador: 1,valor: parseInt(texto)+1});
 
-
+            // this.$store.dispatch("actionCambiaOperador", {operador: 0,valor: parseInt(texto)} );
+            // this.$store.dispatch("actionCambiaOperador", {operador: 1,valor: parseInt(texto)+1} );
+            
         }
     }
 }

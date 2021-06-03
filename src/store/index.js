@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    operadores: [0,0,999]
+    operadores: ['','','operacion']
   },
   mutations: {
     // El segundo parámetro es un objeto para ampliar la cantidad permitida
@@ -15,7 +15,19 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    actionCambiaOperador(context,payload){
+      context.commit("cambiaOperador", payload);
+    }
   },
   modules: {
+  },
+  getters: {
+    getOperador1: function(state){
+      return state.operadores[0]
+    },
+    
+    getOperador2: function(state){
+      return state.operadores[1]
+    }
   }
 })
