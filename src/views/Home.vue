@@ -1,12 +1,13 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    {{operadores[0]}} 
+    <div class="w-100">store en home: {{operadores[0]}} y {{operadores[1]}}</div>
+    <div class="w-100">computed en home: {{operador1}} y {{operador2}}</div>
     <div>
 
       <div>
 
-        <Teclado :operando1=operadores[0] :operando2=operadores[1] />
+        <Teclado :operando1=5 :operando2=8 />
 
       </div> 
 

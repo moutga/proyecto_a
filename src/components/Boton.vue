@@ -27,8 +27,7 @@ export default {
             default: 1
         }
        
-    }
-    /*['texto','spanX','spanY']*/,
+    },
     computed:{
         // Acceder al contenido de la store
         ...mapState(['operadores']),
@@ -55,7 +54,7 @@ export default {
             let ancho = (45 * spanX) + (spanX * (spanX - 1))
             let alto = (45 * spanY) + (spanY * (spanY - 1))
 
-            return `width:${ancho}px;height:${alto}px`
+            return `width:${ancho}px;height:${alto}px` 
 
         }
     },
@@ -67,6 +66,10 @@ export default {
             console.log('Apretaste ' + texto)
 
             this.cambiaOperador({operador: 0,valor: parseInt(texto)});
+            this.cambiaOperador({operador: 1,valor: parseInt(texto)+2});
+
+            //this.$store.commit('cambiaOperador', {operador: 0,valor: parseInt(texto)})
+
 
         }
     }

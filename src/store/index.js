@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    operadores: [0,0]
+    operadores: [0,0,999]
   },
   mutations: {
     // El segundo parámetro es un objeto para ampliar la cantidad permitida

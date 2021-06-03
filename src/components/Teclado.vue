@@ -1,7 +1,11 @@
 <template>
 <div class="losBotones row justify-content-center" >
 
-    {{operando1}} y {{operando2}} = {{sumados}}
+    <div class="w-100">de data: {{operando1}} y {{operando2}} = {{sumados}}</div>
+
+    <div class="w-100">directo store: {{operadores[0]}} y {{operadores[1]}} = {{sumados}}</div>
+
+    <div class="w-100">computed en template: {{op1}} y {{operadores[1]}} = {{sumados}}</div>
 
     <div class="w-100"></div>
     <div class="row">
@@ -55,6 +59,13 @@ export default {
     computed:{ 
         // Acceder al contenido de la store
         ...mapState(['operadores']),
+
+        op1: function(){
+            //console.log(this.operadores[0])
+            //alert('op1')
+            return this.operadores[0]
+
+        },
 
         sumados: function(){
             return this.operando1 + this.operando2
