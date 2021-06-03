@@ -1,13 +1,14 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-
+    {{operadores[0]}} 
     <div>
 
       <div>
-        <Boton spanX="3.5" spanY="1" value="6" /> 
-        <Boton spanY="2" value="8" /> 
-      </div>
+
+        <Teclado :operando1=operadores[0] :operando2=operadores[1] />
+
+      </div> 
 
     </div>
 
@@ -18,13 +19,32 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
-import Boton from '@/components/Boton.vue'
+//import Boton from '@/components/Boton.vue'
+import Teclado from '@/components/Teclado.vue'
+import {mapState} from 'vuex'
 
 export default {
   name: 'Home',
+  computed:{
+    ...mapState(['operadores']),
+
+    operador1 : function(){
+      return this.operadores[0]
+    },
+    operador2 : function(){
+      return this.operadores[1]
+    }
+  },
   components: {
     //HelloWorld,
-    Boton
+    //Boton,
+    Teclado
   }
 } 
 </script>
+
+<style>
+.justify-content-center{justify-content: center;}
+.row{display:flex;flex-wrap:wrap}
+.w-100{width:100%}
+</style>

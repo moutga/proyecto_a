@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex'
+
 export default {
     name: 'Boton',
     data: function(){
@@ -28,6 +30,9 @@ export default {
     }
     /*['texto','spanX','spanY']*/,
     computed:{
+        // Acceder al contenido de la store
+        ...mapState(['operadores']),
+
         // Función que retorna el estilo calculado según las props
         style: function(){
 
@@ -55,11 +60,14 @@ export default {
         }
     },
     methods:{
+        // Acceder a las mutaciones de la store
+        ...mapMutations(['cambiaOperador']),
+
         alClick: function(texto){
             console.log('Apretaste ' + texto)
-        },
-        otraParaTest: function(x){
-            console.log('la otra funcion' + x)
+
+            this.cambiaOperador({operador: 0,valor: parseInt(texto)});
+
         }
     }
 }
