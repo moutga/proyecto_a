@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input :style=style type="button" :value=value @click="alClick(value)" :disabled=disabled />
+        <input :style=style type="button" :value=value @click="alClick(value)" :disabled=desactivado />
     </div>
 </template>
 
@@ -11,7 +11,6 @@ export default {
     name: 'Boton',
     data: function(){
         return {
-            es: false
         }
     },
     props:{
@@ -26,13 +25,14 @@ export default {
         spanY: {
             default: 1
         },
+        // Props para identificar si es un operador o =
         deOperacion: {
             default: false
         },
         deResultado: {
             default: false
         },
-        disabled: {
+        desactivado: {
             default: false
         }
        
