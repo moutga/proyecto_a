@@ -27,7 +27,7 @@
     <div class="w-100"></div>
     <div class="row">
     <Boton value="0" spanX="1" />
-    <Boton value="=" spanX="2" deOperacion=true :disabled=isDisabled />
+    <Boton value="=" spanX="2" deResultado=true :disabled=isIgualDisabled />
     <Boton value="/" spanX="1" deOperacion=true :disabled=isDisabled />
     </div>
 </div>
@@ -55,9 +55,14 @@ export default {
     computed:{
         ...mapState(['operando1','operando2']),
 
-        // Si operando1 de la store tiene un valor retorna verdadero la desactivación
+        // Si operando1 de la store tiene algún valor retorna verdadero la activación del operador
         isDisabled: function(){
             return (this.operando1.length) ? false : true
+        },
+        
+        // Si operando2 de la store tiene algún valor retorna verdadero la activación del igual
+        isIgualDisabled: function(){
+            return (this.operando2.length) ? false : true
         }
         
     },

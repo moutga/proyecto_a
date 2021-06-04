@@ -29,6 +29,9 @@ export default {
         deOperacion: {
             default: false
         },
+        deResultado: {
+            default: false
+        },
         disabled: {
             default: false
         }
@@ -36,7 +39,7 @@ export default {
     },
     computed:{
         // Acceder al contenido de la store
-        ...mapState(['operando1','operando2','operacion']),
+        ...mapState(['operando1','operando2','operador']),
 
         // Función que retorna el estilo calculado según las props
         style: function(){
@@ -66,36 +69,64 @@ export default {
     },
     methods:{
         // Acceder a las mutaciones de la store
-        ...mapMutations(['setOperando1','setOperando2','setOperacion']),
+        ...mapMutations(['setOperando1','setOperando2','setOperador']),
 
         alClick: function(){
-            console.log('Apretaste ' + this.value, 'Es operacion? ' + this.deOperacion)
+            console.log('Apretaste ' + this.value, 'Es operacion? ' + this.deOperacion, 'Es resultado? ' + this.deResultado)
 
             const queHacer = {
                 '+' : 'sumar',
                 '-' : 'restar',
                 '*' : 'multiplicar',
                 '/' : 'dividir',
-                '=' : 'resolver',
                 defecto : 'operacion'
             }
 
-            if( !this.deOperacion ){
-                
-                this.es = true
-                this.setOperando1( this.operando1 + this.value )
+            let soluciones = {
+                'o1': parseInt(this.operando1),
+                'o2': parseInt(this.operando2),
+                sumar(){
+                    return this.o1+this.o2
+                },
+                restar(){
+                    return this.o1-this.o2
+                },
+                multiplicar(){
+                    return this.o1*this.o2
+                },
+                dividir(){
+                    return this.o1/this.o2
+                },
+            }
 
+            // Si el botón no es de operación
+            if( !this.deOperacion && !this.deResultado ){
+                
+                // Si la operación guardada ha cambiado entonces modifico el operando2
+                if(this.operador != 'operacion'){
+
+                    this.setOperando2( this.operando2 + this.value )
+
+                // Si la operación guardada NO ha cambiado entonces modifico el operando1
+                } else {
+
+                    this.setOperando1( this.operando1 + this.value )
+
+                }
+                
+            // Si el botón ES de operación cambio la operación guardada a la correspondiente
             } else {
 
-                this.setOperacion( '' )
-                this.setOperacion( queHacer[this.value] || queHacer['defecto'] )
+                //this.setOperador( '' )
+                this.setOperador( queHacer[this.value] || this.operador )
 
-                this.setOperando2( this.operando2 + this.value )
+            }
 
-                if( this.operacion == 'resolver' ){
-                    console.log('El resultado es: ' + 0);
-                }
-
+            if( this.deResultado ){
+                console.log('El resultado es: ' + soluciones[this.operador]() )
+                this.setOperador('operacion')
+                this.setOperando1('')
+                this.setOperando2('')
             }
 
             

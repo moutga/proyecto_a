@@ -7,20 +7,20 @@ export default new Vuex.Store({
   state: {
     operando1: '',
     operando2: '',
-    operacion: 'operacion'
+    operador: 'operacion'
   },
   mutations: {
     setOperando1(state,valor){
       state.operando1 = valor;
-      console.log('store ' + state.operando1, state.operando2, state.operacion)
+      console.log('store ' + state.operando1, state.operando2, state.operador)
     },
     setOperando2(state,valor){
       state.operando2 = valor;
-      console.log('store ' + state.operando1, state.operando2, state.operacion)
+      console.log('store ' + state.operando1, state.operando2, state.operador)
     },
-    setOperacion(state,valor){
-      state.operacion = valor;
-      console.log('store ' + state.operando1, state.operando2, state.operacion)
+    setOperador(state,valor){
+      state.operador = valor;
+      console.log('store ' + state.operando1, state.operando2, state.operador)
     }
   },
   actions: {
