@@ -1,7 +1,7 @@
 <template>
 <div class="losBotones row justify-content-center">
 
-    <div class="w-100">{{operando1}} y {{operando2}}</div>
+    <div class="w-100">{{operando1}} {{(operador!='operacion')?operador:null}} {{operando2}}</div>
 
     <div class="w-100"></div>
     <div class="row">
@@ -53,7 +53,7 @@ export default {
         }
     },
     computed:{
-        ...mapState(['operando1','operando2']),
+        ...mapState(['operando1','operando2','operador']),
 
         // Si operando1 de la store tiene algún valor retorna verdadero la activación del operador
         isDisabled: function(){
