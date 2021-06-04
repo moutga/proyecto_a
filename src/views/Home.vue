@@ -5,7 +5,7 @@
 
       <div>
         
-        <Teclado :operando1=a :operando2=b /> 
+        <Teclado :ooperando1=a :ooperando2=b /> 
 
       </div> 
 
@@ -20,7 +20,7 @@
 //import HelloWorld from '@/components/HelloWorld.vue'
 //import Boton from '@/components/Boton.vue'
 import Teclado from '@/components/Teclado.vue'
-import {mapState} from 'vuex'
+//import {mapState} from 'vuex'
 
 export default {
   name: 'Home',
@@ -31,7 +31,6 @@ export default {
     }
   },
   computed:{
-    ...mapState(['operadores']),
 
   },
   components: {

@@ -5,29 +5,35 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    operadores: ['','','operacion']
+    operando1: '',
+    operando2: '',
+    operacion: 'operacion'
   },
   mutations: {
-    // El segundo parámetro es un objeto para ampliar la cantidad permitida
-    cambiaOperador(state,{operador,valor}){
-      state.operadores[operador] = valor;
-      console.log(state.operadores[0], state.operadores[1]);
+    setOperando1(state,valor){
+      state.operando1 = valor;
+      console.log('store ' + state.operando1, state.operando2, state.operacion)
+    },
+    setOperando2(state,valor){
+      state.operando2 = valor;
+      console.log('store ' + state.operando1, state.operando2, state.operacion)
+    },
+    setOperacion(state,valor){
+      state.operacion = valor;
+      console.log('store ' + state.operando1, state.operando2, state.operacion)
     }
   },
   actions: {
-    actionCambiaOperador(context,payload){
-      context.commit("cambiaOperador", payload);
-    }
   },
   modules: {
   },
   getters: {
-    getOperador1: function(state){
-      return state.operadores[0]
+    getOperando1: function(state){
+      return state.operando1
     },
     
-    getOperador2: function(state){
-      return state.operadores[1]
+    getOperando2: function(state){
+      return state.operando2
     }
   }
 })

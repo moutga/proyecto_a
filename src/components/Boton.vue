@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input :style=style type="button" :value=value @click="alClick(value)" />
+        <input :style=style type="button" :value=value @click="alClick()" :disabled=disabled />
     </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
     name: 'Boton',
     data: function(){
         return {
-            test: 'sólo un test de data'
+            es: false
         }
     },
     props:{
@@ -27,14 +27,16 @@ export default {
             default: 1
         },
         deOperacion: {
-            //type: Boolean,
+            default: false
+        },
+        disabled: {
             default: false
         }
        
     },
     computed:{
         // Acceder al contenido de la store
-        ...mapState(['operadores']),
+        ...mapState(['operando1','operando2','operacion']),
 
         // Función que retorna el estilo calculado según las props
         style: function(){
@@ -64,10 +66,10 @@ export default {
     },
     methods:{
         // Acceder a las mutaciones de la store
-        ...mapMutations(['cambiaOperador']),
+        ...mapMutations(['setOperando1','setOperando2','setOperacion']),
 
-        alClick: function(texto){
-            console.log('Apretaste ' + texto)
+        alClick: function(){
+            console.log('Apretaste ' + this.value, 'Es operacion? ' + this.deOperacion)
 
             const queHacer = {
                 '+' : 'sumar',
@@ -78,17 +80,25 @@ export default {
                 defecto : 'operacion'
             }
 
-            //let queOperador = 0
+            if( !this.deOperacion ){
+                
+                this.es = true
+                this.setOperando1( this.operando1 + this.value )
 
-            console.log(queHacer[texto] || queHacer['defecto']);
+            } else {
 
-            this.cambiaOperador({operador: 0,valor: parseInt(texto)});
+                this.setOperacion( '' )
+                this.setOperacion( queHacer[this.value] || queHacer['defecto'] )
 
-            // this.$store.commit("cambiaOperador", {operador: 0,valor: parseInt(texto)});
-            // this.$store.commit("cambiaOperador", {operador: 1,valor: parseInt(texto)+1});
+                this.setOperando2( this.operando2 + this.value )
 
-            // this.$store.dispatch("actionCambiaOperador", {operador: 0,valor: parseInt(texto)} );
-            // this.$store.dispatch("actionCambiaOperador", {operador: 1,valor: parseInt(texto)+1} );
+                if( this.operacion == 'resolver' ){
+                    console.log('El resultado es: ' + 0);
+                }
+
+            }
+
+            
             
         }
     }
