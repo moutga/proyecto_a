@@ -27,7 +27,7 @@
     <div class="w-100"></div>
     <div class="row">
     <Boton value="0" spanX="1" />
-    <Boton ref="igual" value="=" spanX="2" deResultado=true :desactivado=isIgualDisabled />
+    <Boton id="igual" ref="igual" value="=" spanX="2" deResultado=true :desactivado=isIgualDisabled />
     <Boton ref="operando" value="/" spanX="1" deOperacion=true :desactivado=isDisabled />
     </div>
 </div>
