@@ -1,7 +1,7 @@
 <template>
 <div class="losBotones row justify-content-center">
 
-    <div class="w-100">{{operando1}} {{(operador!='operacion')?operador:null}} {{operando2}}</div>
+    <div style="display:none" class="w-100">{{operando1}} {{(operador!='operacion')?operador:null}} {{operando2}}</div>
 
     <div class="w-100"></div>
     <div class="row">
