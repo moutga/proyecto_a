@@ -12,15 +12,15 @@ export default new Vuex.Store({
   mutations: {
     setOperando1(state,valor){
       state.operando1 = valor;
-      console.log('store ' + state.operando1, state.operando2, state.operador)
+      // console.log('store ' + state.operando1, state.operando2, state.operador)
     },
     setOperando2(state,valor){
       state.operando2 = valor;
-      console.log('store ' + state.operando1, state.operando2, state.operador)
+      // console.log('store ' + state.operando1, state.operando2, state.operador)
     },
     setOperador(state,valor){
       state.operador = valor;
-      console.log('store ' + state.operando1, state.operando2, state.operador)
+      // console.log('store ' + state.operando1, state.operando2, state.operador)
     }
   },
   actions: {

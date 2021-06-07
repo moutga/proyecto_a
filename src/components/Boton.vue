@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input :style=style type="button" :value=value @click="alClick(value)" :disabled=desactivado />
+        <input :style=style type="button" :value=value :disabled=desactivado />
     </div>
 </template>
 
