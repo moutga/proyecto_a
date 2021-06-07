@@ -92,7 +92,7 @@ export default {
 
 <style scoped>
 .laPantalla{position:relative;border-radius:0.1em;background:#999;color:white;padding: 0 0.4em 0.4em;font-family:consolas;border:1px solid #888;width:180px;margin:0 auto 4px;text-align: right;}
-.acumulado{}
+.acumulado{height:20px}
 .operando{font-size: 2em;background: none;border:none;color:white;text-align:right;width:100%;font-family: inherit;}
 input{outline:none;opacity:0;height: 1px;position:absolute;width: 1px;left: 0;}
 </style>

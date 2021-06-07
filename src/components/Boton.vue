@@ -83,8 +83,6 @@ export default {
                 defecto : 'operacion'
             }
 
-            
-
             // Si el botón no es de operación
             if( !this.deOperacion && !this.deResultado ){
                 
