@@ -6,8 +6,8 @@ import Boton from '@/components/Boton.vue'
 
 
 describe("Testeo de teclado y operaciones", function(){
-
-    test("Botones de operadores e igual deshabilitados hasta entrar un valor",function(){
+  
+    it("Botones de operadores e igual deshabilitados hasta entrar un valor",function(){
 
         // wrapper es el elemento a testear
         const w = shallowMount(Teclado,{
@@ -31,7 +31,7 @@ describe("Testeo de teclado y operaciones", function(){
 
     });
 
-    test("Botones de igual habilitado al ingresar los dos valores",function(){
+    it("Botones de igual habilitado al ingresar los dos valores",function(){
 
         // wrapper es el elemento a testear
         const w = shallowMount(Teclado,{
@@ -54,12 +54,15 @@ describe("Testeo de teclado y operaciones", function(){
         expect(igual.html()).not.toContain('desactivado="true"')
 
     });
-    /*
-    test("Calcular se ejecuta al presionar =", async function(){
+    
+    xit("Calcular se ejecuta al presionar =", function(){
 
-        // wrapper es el elemento a testear
-        const w = shallowMount(Teclado,{
+        const value = '='
+        const deResultado = true
+        const z = shallowMount(Boton,{
             propsData: {
+                value: value,
+                deResultado: deResultado
             },
             mocks: {
                 $store: {
@@ -69,34 +72,26 @@ describe("Testeo de teclado y operaciones", function(){
                     operador: 'sumar'
                   }
                 }
-            },
-        });
-
-        const value = '='
-        const deResultado = true
-        const z = shallowMount(Boton,{
-            propsData: {
-                value: value,
-                deResultado: deResultado
             }
         })
 
-        z.vm.alClick = jest.fn()
-        z.vm.calcular = jest.fn()
+        //const alClick = jest.fn()
+        const calcular = jest.fn()
+        z.vm.calcular = calcular
 
         //z.setMethods({ calcular });
 
         //const igual = w.findComponent({ref:'igual'})
-        const igual = z
-        console.log(igual)
+        //const igual = z
+        //console.log(igual)
 
-        await igual.trigger('click')
+        z.find('input').trigger('click')
         //console.log(igual.trigger('click'));
 
         // Que se haya llamado a la función alClick con value como parámetro
-        expect(z.vm.calcular).toHaveBeenCalled()
+        expect(calcular).toHaveBeenCalled()
 
     });
-    */
+    
 
 })

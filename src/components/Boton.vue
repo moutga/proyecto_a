@@ -117,7 +117,7 @@ export default {
         calcular: function(a,b,operador){
 
             // Objeto de operaciones
-            let soluciones = {
+            const soluciones = {
                 'o1': parseInt(a),
                 'o2': parseInt(b),
                 sumar(){
