@@ -42,12 +42,8 @@ export default {
 					// al acumulado añado operando actual más el =
 					this.acumulado += this.operando + texto;
 
-					// en segundo lugar le añado el resultado calculado sobre acumulado
-					this.acumulado += this.resultado()
-
 					// Emito que entró el =
 					this.$emit('igual',this.acumulado)
-					//this.acumulado = ''
 
 				// Si no es el = reemplazo el valor del acumulado
 				} else {
@@ -105,44 +101,6 @@ export default {
     focusInput: function() {
 
 		this.$refs.input.focus();
-
-    },
-
-    resultado: function(){
-
-      // cadena de acumulado previo al =
-      let operacion = this.acumulado.split('=')[0]
-      let operando = ''
-
-      // Rescato el operando de la cadena acumulado
-      for( let i = 0; i<operacion.length; i++ ){
-
-        if( this.operandos.indexOf(operacion[i]) >= 0 ){
-          operando = operacion[i]
-        }
-
-      }
-
-      let ambosOperadores = operacion.split(operando)
-
-      const soluciones = {
-        'o1': parseInt(ambosOperadores[0]),
-        'o2': parseInt(ambosOperadores[1]),
-        '+': function(){
-            return this.o1+this.o2
-        },
-        '-': function(){
-            return this.o1-this.o2
-        },
-        '*': function(){
-            return this.o1*this.o2
-        },
-        '/': function(){
-            return this.o1/this.o2
-        },
-      }
-
-      return soluciones[operando]()
 
     }
 
