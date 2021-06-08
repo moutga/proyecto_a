@@ -1,7 +1,9 @@
 <template>
-<div>{{operando1}} {{operacion}} {{operando2}} = {{resultado}}
+<div>
+
     <Pantalla ref="pantalla" @subeOperando1="getOperando1" @subeOperando2="getOperando2" @igual="getIgual" />
     <Teclado ref="teclado" @enviaValorUp="getValorTecla" />
+	
 </div>
 </template>
 
@@ -46,18 +48,48 @@ export default {
             // Tambien lo guardo en Calculadora
             this.operando2 = v
 
+			// Filtro la operación a partir del acumulado de Pantalla (último caracter en este punto)
 			this.operacion = this.$refs.pantalla.acumulado[this.$refs.pantalla.acumulado.length-1]
 
         },
 
         getIgual: function(){
+			//console.log(v);
 
+			// Guardo el cálculo solicitado en resultado
+			this.resultado = this.calcular()
+
+			// Actualizo el acumulado de pantalla agregando el resultado luego del =
+			this.$refs.pantalla.acumulado += this.resultado
+
+			// Reseteo de operandos
             this.$refs.teclado.operando2 = ''
             this.$refs.teclado.operando1 = ''
-			this.operando1 = ''
-			this.operando2 = ''
 
-        }
+        }, 
+
+		calcular: function(){
+
+			const soluciones = {
+				'o1': parseInt(this.operando1),
+				'o2': parseInt(this.operando2),
+				'+': function(){
+					return this.o1+this.o2
+				},
+				'-': function(){
+					return this.o1-this.o2
+				},
+				'*': function(){
+					return this.o1*this.o2
+				},
+				'/': function(){
+					return this.o1/this.o2
+				},
+			}
+
+			return soluciones[this.operacion]()
+
+		}
     },
     computed: {},
     components: {
