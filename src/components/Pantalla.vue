@@ -2,12 +2,11 @@
   <div class="laPantalla" @click="focusInput">
     <div class="acumulado">{{ acumulado }}</div>
     <div class="operando">{{ operando }}</div>
-    <input :value="operando" @keyup="agregarTexto" />
+    <input ref="input" :value="operando" @keyup="agregarTexto" />
   </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
 
 export default {
   name: "Pantalla",
@@ -22,8 +21,6 @@ export default {
   props: {},
   computed: {},
   methods: {
-    ...mapMutations(["setOperando1", "setOperando2", "setOperador"]),
-
     agregarTexto: function(texto) {
       // Si el caracter existe dentro de los permitidos...
       if (this.permitidas.indexOf(texto.key) >= 0) {
@@ -57,7 +54,6 @@ export default {
             this.operando = this.operando.substring(1);
           }
 
-          //this.setOperando1(this.operando)
         }
 
       // Tirar error si se tipea un símbolo no permitido
@@ -81,8 +77,9 @@ export default {
 
     // Enfocar el input al clickear la pantalla
     focusInput: function() {
-      //console.log(this.$el.querySelector('input'));
-      this.$el.querySelector("input").focus();
+
+      this.$refs.input.focus();
+      
     },
 
     resultado: function(){
@@ -127,7 +124,8 @@ export default {
   
   // Enfocar el input al montarse el componente
   mounted: function() {
-    this.$el.querySelector("input").focus();
+    //console.log(this.$refs.input);
+    this.$refs.input.focus();
   }
 
 };

@@ -3,13 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <div>
 
-      <div>
-        
-        <Pantalla />
-
-        <Teclado /> 
-
-      </div> 
+      <Calculadora />
 
     </div>
 
@@ -19,25 +13,16 @@
 
 <script>
 // @ is an alias to /src
-//import HelloWorld from '@/components/HelloWorld.vue'
-//import Boton from '@/components/Boton.vue'
-import Teclado from '@/components/Teclado.vue'
-import Pantalla from '@/components/Pantalla.vue'
-//import {mapState} from 'vuex'
+import Calculadora from '@/components/Calculadora.vue'
 
 export default {
   name: 'Home',
   data:function(){
     return {}
   },
-  computed:{
-
-  },
+  computed:{},
   components: {
-    //HelloWorld,
-    //Boton,
-    Teclado,
-    Pantalla
+    Calculadora
   }
 } 
 </script>

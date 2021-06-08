@@ -1,7 +1,7 @@
 <template>
 <div class="losBotones row justify-content-center">
 
-    <div style="" class="w-100">{{toperando1}} {{(toperador!='operacion')?toperador:null}} {{toperando2}} = {{resultado}}</div>
+    <div style="" class="w-100">{{operando1}} {{(operador!='operacion')?operador:null}} {{operando2}} = {{resultado}}</div>
 
     <div class="w-100"></div>
     <div class="row">
@@ -30,43 +30,38 @@
     <Boton id="igual" ref="igual" value="=" spanX="2" deResultado=true :desactivado=isIgualDisabled @click.native="getValue" />
     <Boton ref="operando" value="/" spanX="1" deOperacion=true :desactivado=isDisabled @click.native="getValue" />
     </div>
+    
 </div>
 </template>
 
 <script>
 import Boton from '@/components/Boton.vue'
-import { mapState, mapMutations } from 'vuex'
 
 export default {
     name: 'Teclado', 
     data:function(){
         return {
-            toperando1: '',
-            toperando2: '',
-            toperador: 'operacion',
+            operando1: '',
+            operando2: '',
+            operador: 'operacion',
             resultado: 0
         }
     },
     props:{
     },
     computed:{
-        ...mapState(['operando1','operando2','operador']),
 
         // Si operando1 de la store tiene algún valor retorna verdadero la activación del operador
         isDisabled: function(){
-            //return (this.operando1.length) ? false : true
-            return (this.toperando1.length) ? false : true
+            return (this.operando1.length) ? false : true
         },
         
         // Si operando2 de la store tiene algún valor retorna verdadero la activación del igual
         isIgualDisabled: function(){
-            //return (this.operando2.length) ? false : true
-            return (this.toperando2.length) ? false : true
+            return (this.operando2.length) ? false : true
         }
     },
     methods:{
-        // Acceder a las mutaciones de la store
-        ...mapMutations(['setOperando1','setOperando2','setOperador']),
 
         deOperacion: function(caracter){
             const operadores = {
@@ -86,8 +81,6 @@ export default {
             //console.log('Apretaste ' + this.value, 'Es operacion? ' + this.deOperacion, 'Es resultado? ' + this.deResultado)
             //console.log(e.target)
             const valor = e.originalTarget.defaultValue
-            // console.log(this.deOperacion(valor));
-            // console.log(this.deResultado(valor));
 
             // Objeto de traducción de botón a operación
             const queHacer = {
@@ -102,25 +95,23 @@ export default {
             if( !this.deOperacion(valor) && !this.deResultado(valor) ){
                 
                 // Si la operación guardada ha cambiado entonces modifico el operando2
-                if(this.toperador != 'operacion'){
+                if(this.operador != 'operacion'){
 
-                    //this.setOperando2( this.operando2 + valor )
-                    this.toperando2 += valor
+                    //this.seoperando2( this.operando2 + valor )
+                    this.operando2 += valor
 
                 // Si la operación guardada NO ha cambiado entonces modifico el operando1
                 } else {
 
-                    // this.setOperando1( this.operando1 + valor )
-                    this.toperando1 += valor
+                    // this.seoperando1( this.operando1 + valor )
+                    this.operando1 += valor
 
                 }
                 
             // Si el botón ES de operación cambio la operación guardada a la correspondiente
             } else {
 
-                //this.setOperador( '' )
-                //this.setOperador( queHacer[valor] || this.toperador )
-                this.toperador = queHacer[valor] || this.toperador
+                this.operador = queHacer[valor] || this.operador
 
             }
 
@@ -128,7 +119,7 @@ export default {
             // luego reinicia operandos y operador 
             if( this.deResultado(valor) ){
 
-                this.calcular(this.toperando1,this.toperando2,this.toperador)
+                this.calcular(this.operando1,this.operando2,this.operador)
 
             }
 
@@ -154,13 +145,10 @@ export default {
                 },
             }
 
-            console.log('El resultado es: ' + soluciones[operador]() )
-            // this.setOperador('operacion')
-            // this.setOperando1('')
-            // this.setOperando2('')
-            this.toperando1 = ''
-            this.toperando2 = ''
-            this.toperador = 'operacion'
+            //console.log('El resultado es: ' + soluciones[operador]() )
+            this.operando1 = ''
+            this.operando2 = ''
+            this.operador = 'operacion'
             this.resultado = soluciones[operador]()
 
         }

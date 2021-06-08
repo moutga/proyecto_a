@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import {mapState, mapMutations} from 'vuex'
 
 export default {
     name: 'Boton',
@@ -38,8 +37,6 @@ export default {
        
     },
     computed:{
-        // Acceder al contenido de la store
-        ...mapState(['operando1','operando2','operador']),
 
         // Función que retorna el estilo calculado según las props
         style: function(){
@@ -68,78 +65,6 @@ export default {
         }
     },
     methods:{
-        // Acceder a las mutaciones de la store
-        ...mapMutations(['setOperando1','setOperando2','setOperador']),
-
-        alClick: function(valor){
-            //console.log('Apretaste ' + this.value, 'Es operacion? ' + this.deOperacion, 'Es resultado? ' + this.deResultado)
-
-            // Objeto de traducción de botón a operación
-            const queHacer = {
-                '+' : 'sumar',
-                '-' : 'restar',
-                '*' : 'multiplicar',
-                '/' : 'dividir',
-                defecto : 'operacion'
-            }
-
-            // Si el botón no es de operación
-            if( !this.deOperacion && !this.deResultado ){
-                
-                // Si la operación guardada ha cambiado entonces modifico el operando2
-                if(this.operador != 'operacion'){
-
-                    this.setOperando2( this.operando2 + valor )
-
-                // Si la operación guardada NO ha cambiado entonces modifico el operando1
-                } else {
-
-                    this.setOperando1( this.operando1 + valor )
-
-                }
-                
-            // Si el botón ES de operación cambio la operación guardada a la correspondiente
-            } else {
-
-                //this.setOperador( '' )
-                this.setOperador( queHacer[valor] || this.operador )
-
-            }
-
-            // Si el botón es = calcula en base al operador y el objeto de soluciones
-            // luego reinicia operandos y operador 
-            if( this.deResultado ){
-                this.calcular(this.operando1,this.operando2,this.operador)
-            }
-
-        }, 
-
-        calcular: function(a,b,operador){
-
-            // Objeto de operaciones
-            const soluciones = {
-                'o1': parseInt(a),
-                'o2': parseInt(b),
-                sumar(){
-                    return this.o1+this.o2
-                },
-                restar(){
-                    return this.o1-this.o2
-                },
-                multiplicar(){
-                    return this.o1*this.o2
-                },
-                dividir(){
-                    return this.o1/this.o2
-                },
-            }
-
-            console.log('El resultado es: ' + soluciones[operador]() )
-            this.setOperador('operacion')
-            this.setOperando1('')
-            this.setOperando2('')
-
-        }
     }
 }
 </script>
