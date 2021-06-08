@@ -21,65 +21,91 @@ export default {
   props: {},
   computed: {},
   methods: {
+
     agregarTexto: function(texto) {
+
+      // Filtro si la entrada es de teclado o Teclado
+		if(texto.keyCode){
+			texto = texto.key
+		}
+
       // Si el caracter existe dentro de los permitidos...
-      if (this.permitidas.indexOf(texto.key) >= 0) {
+		if (this.permitidas.indexOf(texto) >= 0) {
         //console.log(texto.key)
 
-        // Si se ingresa un operando o =
-        if (this.operandos.indexOf(texto.key) >= 0) {
+			// Si se ingresa un operando o =
+			if (this.operandos.indexOf(texto) >= 0) {
 
-          // Cuando la tecla sea = concateno el acumulado con operando + =
-          if (texto.key == "=") {
+				// Cuando la tecla sea = concateno el acumulado con operando + =
+				if (texto == "=") {
 
-            // al acumulado añado operando actual más el =
-            this.acumulado += this.operando + texto.key;
-            // en segundo lugar le añado el resultado calculado sobre acumulado
-            this.acumulado += this.resultado()
+					// al acumulado añado operando actual más el =
+					this.acumulado += this.operando + texto;
 
-          // Si no es el = reemplazo el valor del acumulado
-          } else {
-            this.acumulado = this.operando + texto.key;
-          }
+					// en segundo lugar le añado el resultado calculado sobre acumulado
+					this.acumulado += this.resultado()
 
-          // Reseteo el operando
-          this.operando = "0";
+					// Emito que entró el =
+					this.$emit('igual',this.acumulado)
+					//this.acumulado = ''
 
-          // Si no es un operando
-        } else {
-          this.operando += texto.key;
+				// Si no es el = reemplazo el valor del acumulado
+				} else {
 
-          // Si el primer caracter del operando es 0 lo quito
-          if (this.operando[0] === "0") {
-            this.operando = this.operando.substring(1);
-          }
+					this.acumulado = this.operando + texto;
 
-        }
+				}
+
+				// Reseteo el operando
+				this.operando = "0";
+
+			// Si no es un operador
+			} else {
+
+				this.operando += texto;
+
+				// Emite el operando1 a la calculadora si no hay nada acumulado
+				// o si el acumulado presenta un = (prueba que ya se resolvió)
+				// operación previa e inicia una nueva. Caso contrario emite el
+				// operando2
+				if( this.acumulado.length > 0 && this.acumulado.indexOf('=') < 0 ){
+					this.$emit('subeOperando2',this.operando)
+				} else {
+					this.$emit('subeOperando1',this.operando)
+				}
+				
+
+				// Si el primer caracter del operando es 0 lo quito
+				if (this.operando[0] === "0") {
+					this.operando = this.operando.substring(1);
+				}
+
+			}
 
       // Tirar error si se tipea un símbolo no permitido
-      } else {
-        // Descarto las teclas especiales
-        const teclasEspeciales = [
-          "Shift",
-          "Enter",
-          "Control",
-          "Alt",
-          "AltGraph",
-        ];
+		} else {
+			// Descarto las teclas especiales
+			const teclasEspeciales = [
+			"Shift",
+			"Enter",
+			"Control",
+			"Alt",
+			"AltGraph",
+			];
 
-        if (teclasEspeciales.indexOf(texto.key) < 0) {
-         
-          throw new Error("Caracter no permitido (" + texto.key + ")");
+			if (teclasEspeciales.indexOf(texto) < 0) {
 
-        }
-      }
+				throw new Error("Caracter no permitido (" + texto + ")");
+
+			}
+		}
     },
 
     // Enfocar el input al clickear la pantalla
     focusInput: function() {
 
-      this.$refs.input.focus();
-      
+		this.$refs.input.focus();
+
     },
 
     resultado: function(){
