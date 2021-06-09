@@ -3,7 +3,11 @@
 
     <Pantalla ref="pantalla" @subeOperando1="getOperando1" @subeOperando2="getOperando2" @igual="getIgual" />
     <Teclado ref="teclado" @enviaValorUp="getValorTecla" />
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 625fd6588e75f0fac669ecef94cd89e5ef9e7509
 </div>
 </template>
 
@@ -51,10 +55,17 @@ export default {
         },
 
         getIgual: function(){
+			//console.log(v);
 
 			// Guardo el cálculo solicitado en resultado
 			this.resultado = this.calcular()
 
+<<<<<<< HEAD
+			// Guardo el cálculo solicitado en resultado
+			this.resultado = this.calcular()
+
+=======
+>>>>>>> 625fd6588e75f0fac669ecef94cd89e5ef9e7509
 			// Actualizo el acumulado de pantalla agregando el resultado luego del =
 			this.$refs.pantalla.acumulado += this.resultado
 
