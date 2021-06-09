@@ -26,7 +26,7 @@ export default {
             default: 1,
 			type: Number
         },
-        // Props para identificar si es un operador o =
+        // Props para identificar si es un operador o símbolo igual
         deOperacion: {
             default: false
         },
