@@ -7,7 +7,7 @@ import Boton from '@/components/Boton.vue'
 
 describe("Testeo de teclado y operaciones", function(){
   
-    it("Botones de operadores e igual deshabilitados hasta entrar un valor",function(){
+    xit("Botones de operadores e igual deshabilitados hasta entrar un valor",function(){
 
         // wrapper es el elemento a testear
         const w = shallowMount(Teclado,{
@@ -31,7 +31,7 @@ describe("Testeo de teclado y operaciones", function(){
 
     });
 
-    it("Botones de igual habilitado al ingresar los dos valores",function(){
+    xit("Botones de igual habilitado al ingresar los dos valores",function(){
 
         // wrapper es el elemento a testear
         const w = shallowMount(Teclado,{

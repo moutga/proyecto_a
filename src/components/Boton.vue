@@ -14,15 +14,17 @@ export default {
     },
     props:{
         value: {
-            type:String, 
-            default: "Texto default"
+            type: String, 
+            default: "Texto por defecto"
         },
         // Defino las props para ancho y alto con tipo y valor por defecto
         spanX: {
-            default: 1
+            default: 1,
+			type: Number
         },
         spanY: {
-            default: 1
+            default: 1,
+			type: Number
         },
         // Props para identificar si es un operador o =
         deOperacion: {
@@ -41,8 +43,8 @@ export default {
         // Función que retorna el estilo calculado según las props
         style: function(){
 
-            let spanX = parseInt(this.spanX) 
-            let spanY = parseInt(this.spanY)
+            let spanX = this.spanX 
+            let spanY = this.spanY
 
             if( spanX < 0 || spanY < 0 ){
                 spanX = spanY = 1

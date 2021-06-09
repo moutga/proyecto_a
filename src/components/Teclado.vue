@@ -5,30 +5,30 @@
 
     <div class="w-100"></div>
     <div class="row">
-    <Boton value="1" spanX="1" @click.native="getValue" />
-    <Boton value="2" spanX="1" @click.native="getValue" />
-    <Boton value="3" spanX="1" @click.native="getValue" />
-    <Boton ref="operando" value="+" spanX="1" deOperacion=true :desactivado=isDisabled @click.native="getValue" />
+    <Boton value="1" v-bind:spanX="1" @click.native="getValue" />
+    <Boton value="2" v-bind:spanX="1" @click.native="getValue" />
+    <Boton value="3" v-bind:spanX="1" @click.native="getValue" />
+    <Boton ref="operando" value="+" v-bind:spanX="1" deOperacion=true :desactivado=isDisabled @click.native="getValue" />
     </div>
     <div class="w-100"></div>
     <div class="row">
-    <Boton value="4" spanX="1" @click.native="getValue" />
-    <Boton value="5" spanX="1" @click.native="getValue" />
-    <Boton value="6" spanX="1" @click.native="getValue" />
-    <Boton ref="operando" value="-" spanX="1" deOperacion=true :desactivado=isDisabled @click.native="getValue" />
+    <Boton value="4" v-bind:spanX="1" @click.native="getValue" />
+    <Boton value="5" v-bind:spanX="1" @click.native="getValue" />
+    <Boton value="6" v-bind:spanX="1" @click.native="getValue" />
+    <Boton ref="operando" value="-" v-bind:spanX="1" deOperacion=true :desactivado=isDisabled @click.native="getValue" />
     </div>
     <div class="w-100"></div>
     <div class="row">
-    <Boton value="7" spanX="1" @click.native="getValue" />
-    <Boton value="8" spanX="1" @click.native="getValue" />
-    <Boton value="9" spanX="1" @click.native="getValue" />
-    <Boton ref="operando" value="*" spanX="1" deOperacion=true :desactivado=isDisabled @click.native="getValue" />
+    <Boton value="7" v-bind:spanX="1" @click.native="getValue" />
+    <Boton value="8" v-bind:spanX="1" @click.native="getValue" />
+    <Boton value="9" v-bind:spanX="1" @click.native="getValue" />
+    <Boton ref="operando" value="*" v-bind:spanX="1" deOperacion=true :desactivado=isDisabled @click.native="getValue" />
     </div>
     <div class="w-100"></div>
     <div class="row">
-    <Boton value="0" spanX="1"  @click.native="getValue"/>
-    <Boton id="igual" ref="igual" value="=" spanX="2" deResultado=true :desactivado=isIgualDisabled @click.native="getValue" />
-    <Boton ref="operando" value="/" spanX="1" deOperacion=true :desactivado=isDisabled @click.native="getValue" />
+    <Boton value="0" v-bind:spanX="1"  @click.native="getValue"/>
+    <Boton id="igual" ref="igual" value="=" v-bind:spanX="2" deResultado=true :desactivado=isIgualDisabled @click.native="getValue" />
+    <Boton ref="operando" value="/" v-bind:spanX="1" deOperacion=true :desactivado=isDisabled @click.native="getValue" />
     </div>
 
 </div>
